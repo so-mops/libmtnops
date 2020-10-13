@@ -36,8 +36,12 @@ client_example.c: barebones example of how to use the NG client
 libmtnops.conf: example of a config file for the configure routine
 
 ngclient.c: client routines for the NG protocol
+
 server_example.c:  barebones example of how to use the NG client
+
 configure.c: routines for configure NOT WORKING
+
 libmtnops.h: the header file to be included in programs using this lib
+
 ngserver.c: server routines for the NG protocol
 
