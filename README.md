@@ -32,7 +32,9 @@ client_example is a standalone application.  Start it with:
 
 ## Files
 client_example.c: barebones example of how to use the NG client
+
 libmtnops.conf: example of a config file for the configure routine
+
 ngclient.c: client routines for the NG protocol
 server_example.c:  barebones example of how to use the NG client
 configure.c: routines for configure NOT WORKING
