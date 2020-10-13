@@ -32,6 +32,7 @@
 #define CMD_CMD "COMMAND"
 #define CMD_SUCCESS "OK"
 #define CMD_REQ_SUCCESS "OK"
+#define CMD_CMD_SUCCESS "OK"
 #define CMD_ERR "ERROR"
 #define CMD_UNKNOWN "UNKNOWN_CMD"
 #define CMD_REQ_ERR "REQUEST_ERROR"
@@ -342,28 +343,32 @@ int msg_handler(char *in_string, char *out_string)
 	cpy_header(&new_message, &ret_message);
 		
 		
-	if(strcmp( new_message.cmd, "COMMAND" ) == 0)
+	if(strcmp( new_message.cmd, CMD_CMD ) == 0)
 		{
 		err = server_ext_command(&new_message);
-		if (err){
-	       		sprintf(ret_message.cmd, "FAILED");
-	       		return NOK;}
+		if (err)
+			{
+	       		sprintf(ret_message.cmd, CMD_CMD_ERR);
+	       		//return NOK;
+	       		}
 		else
-	       		sprintf(ret_message.cmd, "OK");
+	       		sprintf(ret_message.cmd, CMD_CMD_SUCCESS);
 	       	}
 		
-	else if(strcmp( new_message.cmd, "REQUEST" ) == 0)
+	else if(strcmp( new_message.cmd, CMD_REQ ) == 0)
 		{
 		err = server_ext_request(&new_message, &ret_message);
-		if (err){
-	       		sprintf(ret_message.cmd, "FAILED");
-	       		return NOK;}
+		if (err)
+			{
+	       		sprintf(ret_message.cmd, CMD_REQ_ERR);
+	       		//return NOK;
+	       		}
 	       	}
 		
 		
 	else
 		{
-		return NOK;
+		sprintf(ret_message.cmd, CMD_UNKNOWN);
 		}
 		
 	       
