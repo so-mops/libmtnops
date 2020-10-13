@@ -1,3 +1,10 @@
+#########################################
+# makefile for libmtnops				  	#
+################objects##################
+LIBMTNOPS_OBJS = ngserver.o ngclient.o configure.o
+
+###############binaries##################
+
 all: clean libmtnops.a server_example client_example
 
 ngserver.o: ngserver.c libmtnops.h
@@ -9,7 +16,7 @@ ngclient.o: ngclient.c libmtnops.h
 configure.o: configure.c libmtnops.h
 		gcc -c configure.c
 		
-libmtnops.a: ngserver.o ngclient.o configure.o
+libmtnops.a: $(LIBMTNOPS_OBJS)
 		ar rcs $@ $^
 		
 server_example: server_example.c libmtnops.a
@@ -18,6 +25,7 @@ server_example: server_example.c libmtnops.a
 client_example: client_example.c libmtnops.a
 		gcc client_example.c -L. -lmtnops -o client_example
 
+###############Utilities################	
 		
 clean:
 		rm -rf *.o *.a server_example client_example
