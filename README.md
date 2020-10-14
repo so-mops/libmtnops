@@ -24,7 +24,7 @@ server_example is a standalone application.  Start it with:
 ```
 ./server_example
 ```
-client_example is a standalone application.  Start it with:
+client_example is a standalone application that can talk to server_example.  Start it with:
 ```
 ./client_example
 ```
