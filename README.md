@@ -39,7 +39,7 @@ ngclient.c: client routines for the NG protocol
 
 server_example.c:  barebones example of how to use the NG client
 
-configure.c: routines for configure NOT WORKING
+configure.c: routines for configure
 
 libmtnops.h: the header file to be included in programs using this lib
 
