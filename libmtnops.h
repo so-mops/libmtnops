@@ -42,21 +42,10 @@ void printmessage(TCS_MESSAGE *new_message);
 void gen_string(TCS_MESSAGE *ret_message, char *out_string);
 int parse_line(TCS_MESSAGE *new_message, char *line);
 
-//message identifiers
-/*#define TELID_ERR       "TELID ERROR"
-#define SYSID_ERR       "SYSID ERROR"
-#define CMD_REQ "REQUEST"
-#define CMD_CMD "COMMAND"
-#define CMD_SUCCESS "OK"
-#define CMD_REQ_SUCCESS "OK"
-#define CMD_ERR "ERROR"
-#define CMD_UNKNOWN "UNKNOWN_CMD"
-#define CMD_REQ_ERR "REQUEST_ERROR"
-#define CMD_CMD_ERR "COMMAND_ERROR"
-#define NODATA "NULL"*/
-
 
 
 /////////////////////////// config stuff ////////////////////////////////
 int configure(char *filename);
 void initDefault();
+extern int config_ext_parse(char words[MAX_ARGS][ARG_LEN]);
+			

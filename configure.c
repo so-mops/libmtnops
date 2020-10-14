@@ -15,10 +15,11 @@
 
 #define KEYWORD 0
 #define VALUE 1
-#define ARG1 1
-#define ARG2 2
-#define MAXFIELDS 3
-#define MINFIELDS 2
+//#define ARG1 1
+//#define ARG2 2
+#define FIELD_LEN 40
+#define MIN_FIELDS 2
+#define MAX_FIELDS 100
 int server_ix = 0;
 
 
@@ -40,10 +41,10 @@ void initDefault();
 int configure(char *filename)
 {
 FILE *fp;
-char line[80];
+char line[MAX_ARG_SZ];
 char *search = " \t";
 char *token;
-char words[MAXFIELDS][50];
+char words[MAX_ARGS][ARG_LEN];
 int wordctr=0, linectr=0, port;
 char *wordptr;
 	printf("Configuration Starting:\n");
@@ -56,6 +57,9 @@ char *wordptr;
 	//read each line
 	while( fgets(line,1024,fp) ) 
 		{
+		memset(words, 0, MAX_ARG_SZ);
+		
+		
 		linectr++;
 		if(line[strlen(line)-1]=='\n')
 			line[strlen(line)-1]='\0';
@@ -76,28 +80,21 @@ char *wordptr;
 			//and increment the counter
 			sprintf(words[wordctr], "%s", wordptr);
     			wordctr++;
-			if (wordctr>=MAXFIELDS){break;}
+			if (wordctr>=MAX_FIELDS){break;}
 			wordptr=strtok(NULL, search);
 			}
 		//Parse the known keywords
-		if (wordctr < MINFIELDS)
+		if (wordctr < MIN_FIELDS)
 			{
-			//printf("invalid line: not enough fields -- \" %s \" -- ignoring\n", line);
+			printf("invalid line: not enough fields -- \" %s \" -- ignoring\n", line);
 			}
-		/*else if (strcmp(words[KEYWORD], "PORT") == 0)
-			{
-			printf("listening port = %s\n", words[VALUE]);
-			sscanf(words[VALUE], "%i", &SERVER_PORT);
-			}
-		else if (strcmp(words[KEYWORD], "TELID") == 0)
-			{
-			printf("Telescope ID = %s\n", words[VALUE]);
-			sprintf(TELESCOPE_ID, "%s", words[VALUE]);
-			}*/
 		else
 			{
-			printf("unrecognized keyword: %s -- ignoring\n", words[KEYWORD]);
+			printf("%s\n",words[0] );
+			config_ext_parse(words);
 			}
+		memset(line, 0, MAX_ARG_SZ);
+		
 	
 		}//end "while( fgets..."
 	printf("Configuration Done!\n");

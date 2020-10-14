@@ -88,7 +88,7 @@ client_init(REMOTE_NET_ADDR, REMOTE_PORT, REMOTE_TELID, REMOTE_SYSID);
     //printf("got: %s\n", data);
     close(sd);
 
-  parse_line(ret_message, &data);
+  parse_line(ret_message, data);
 //strcpy(output, &data[strlen(preamble)]);
       
 

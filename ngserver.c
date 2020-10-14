@@ -133,7 +133,7 @@ struct timeval tv;
 		//printf("waiting for data on port TCP %u\n",SERVER_PORT);
 
 		cliLen = sizeof(cliAddr);
-		newSd = accept(sd, (struct sockaddr *) &cliAddr, &cliLen);
+		newSd = accept(sd, (struct sockaddr *) &cliAddr, (socklen_t *)&cliLen);
 
     		if(newSd<0) 
 			{
