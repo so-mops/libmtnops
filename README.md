@@ -1,6 +1,6 @@
 # libmtnops
 CONSTANTLY IN DEVELOPMENT
-For years every time I needed an NG client or server I just wrote one into whatever code I had...  eventually I just copied old files into my code.  Now I decided to make an actual library out of the same files I've been copying around for a while...  This will hopefully eventually include my NG client and server, my configuration routine, and my general purpose INDI client.
+For years every time I needed an NG client or server I just wrote one into whatever code I had...  eventually I just copied old files into my code.  Now I decided to make an actual library out of the same files I've been copying around for a while...  This currently includes my NG client and server, my configuration routine, and will hopefully eventually include my general purpose INDI client.
 
 
 ## Build
